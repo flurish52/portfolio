@@ -22,16 +22,22 @@ const submit = () => {
 
 <template>
     <GuestLayout>
+        <div class="mx-auto h-fit my-12  py-12 text-white w-full md:w-1/2 flex items-center justify-center">
+
         <Head title="Register" />
 
-        <form @submit.prevent="submit">
+        <form @submit.prevent="submit"
+              class="flex flex-col my-12  w-full text-white"
+        >
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="name" value="Name"
+                class="text-white"
+                />
 
                 <TextInput
                     id="name"
                     type="text"
-                    class="mt-1 block w-full"
+                    class="mt-1 block w-full "
                     v-model="form.name"
                     required
                     autofocus
@@ -109,5 +115,7 @@ const submit = () => {
                 </PrimaryButton>
             </div>
         </form>
+        </div>
+
     </GuestLayout>
 </template>
