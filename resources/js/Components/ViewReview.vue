@@ -30,7 +30,6 @@
 </template>
 
 <script setup>
-import {Link} from "@inertiajs/vue3";
 import { defineProps, defineEmits } from 'vue';
 
 const props = defineProps({

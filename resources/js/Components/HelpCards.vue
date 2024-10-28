@@ -13,7 +13,9 @@
                 <p class="text-gray-700 mt-2 text-center">
                     Instantly streamline your process with done-for-you premium templates.
                 </p>
+                <Link href="/design-templates">
                 <button class="font-bold w-full mt-4 bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-purple-600">Level Up</button>
+                </Link>
             </div>
 
             <!-- Card 2 -->
@@ -24,7 +26,9 @@
                 <p class="text-gray-700 mt-2 text-center">
                     Learn how to manage design projects to become client-ready in just an afternoon.
                 </p>
+                <Link href="/courses">
                 <button class="font-bold w-full mt-4 bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-purple-600">Start Now</button>
+                </Link>
             </div>
 
             <!-- Card 3 -->
@@ -36,7 +40,10 @@
                 <p class=" text-gray-700 mt-2 text-center">
                     Grow your design and business skills with these free guides and resources.
                 </p>
+                <Link href="/free-resources">
                 <button class="font-bold w-full mt-4 bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-purple-600">Free Stuff</button>
+                </Link>
+
             </div>
         </div>
     </section>
@@ -46,6 +53,7 @@
 export default {};
 </script>
 
-<style scoped>
-/* Optional card or section styling if needed */
-</style>
+<script setup>
+import {Link} from "@inertiajs/vue3";
+
+</script>

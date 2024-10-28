@@ -1,71 +1,48 @@
 <template>
-    <div class="relative  text-white py-10">
-        <h2 class="text-center text-2xl font-bold mb-8">
-            I have already helped <span class="text-yellow-500">thousands</span> of ambitious designers who are eager to grow. Now, it's your turn...
-        </h2>
-        
-        <div class="relative max-w-5xl mx-auto">
-            <!-- Left Arrow -->
-            <button
-                @click="prev"
-                class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-700 p-2 rounded-full hover:bg-blue-500 transition-colors"
+    <div id="controls-carousel" class="relative w-full flex flex-col justify-center items-center" data-carousel="static">
+        <!-- Carousel wrapper -->
+        <div class=" relative flex items-center justify-center px-12 w-1/2 h-full overflow-hidden rounded-lg md:h-44">
+            <div
+                v-for="(review, index) in props.reviews"
+                :key="index"
+                class="duration-700 ease-in-out flex justify-center items-center text-white font-bold"
+                :class="{'hidden': index !== 0}"
+            data-carousel-item
             >
-                <!-- Left Icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-            </button>
-
-            <!-- Testimonial Cards -->
-            <div class="overflow-hidden px-10">
-                <div
-                    class="flex transition-transform duration-500 ease-in-out space-x-4"
-                    :style="{ transform: `translateX(-${activeIndex * 100}%)` }"
-                >
-                    <div
-                        v-for="(review, index) in reviews"
-                        :key="index"
-                        class="min-w-full bg-transparent text-white p-6 rounded-md shadow-md"
-                    >
-                        <p class="text-lg bg-transparent">{{ review.message }}</p>
-                        <p class="font-bold mt-4">{{ review.client_name }}</p>
-                        <p class="text-sm mt-2">{{ review.company_role }}</p>
-                    </div>
+                <div class="w-full px-12">
+                <p>{{ review.message }}</p>
+                <p>{{ review.client_name }}</p>
+                <p>{{ review.company_role }}</p>
                 </div>
-            </div>
-
-            <!-- Right Arrow -->
-            <button
-                @click="next"
-                class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-700 p-2 rounded-full hover:bg-blue-500 transition-colors"
-            >
-                <!-- Right Icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-            </button>
         </div>
+    </div>
+    <!-- Slider controls -->
+    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                </svg>
+                <span class="sr-only">Previous</span>
+            </span>
+    </button>
+    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                </svg>
+                <span class="sr-only">Next</span>
+            </span>
+    </button>
     </div>
 </template>
 
 <script setup>
-import {ref} from "vue";
+import { defineProps } from "vue";
 
 let props = defineProps({
-    reviews: Array,
-})
-
-let activeIndex = ref(1)
-let next = () => {
-    if (props.reviews[activeIndex.value] < props.reviews.length - 1) {
-        props.reviews[activeIndex.value]++;
-    }
-}
-
-let prev = () => {
-    if (props.reviews[activeIndex.value] > 0) {
-        props.reviews[activeIndex.value]--;
-    }
-}
-
+    reviews: {
+        type: Array,
+        required: true,
+    },
+});
 </script>

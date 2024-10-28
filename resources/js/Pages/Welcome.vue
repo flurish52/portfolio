@@ -31,7 +31,9 @@
             id="helpCards"
             />
     </section>
-    <section>
+    <section
+    class=""
+    >
         <ClientReviews
         :reviews="props.reviews"
         />
